@@ -22,8 +22,9 @@ public class Cursos
 	{
        boolean retorno = false;
 
-       if (codCurso==0)
-           throw new Exception ("Código do Curso não fornecido");
+       if (codCurso<=0)
+           throw new Exception ("CÃ³digo do Curso nÃ£o fornecido");
+
 
        try
        {

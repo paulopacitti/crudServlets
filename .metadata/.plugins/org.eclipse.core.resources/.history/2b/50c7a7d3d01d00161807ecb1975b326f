@@ -22,8 +22,9 @@ public class Cursos
 	{
        boolean retorno = false;
 
-       if (codCurso==0)
-           throw new Exception ("Código do Curso não fornecido");
+       if (codCurso<=0)
+           throw new Exception ("CÃ³digo do Curso nÃ£o fornecido");
+
 
        try
        {
@@ -85,7 +86,6 @@ public class Cursos
            bd.setString (2, curso.getNome());
 
            bd.executeUpdate ();
-           bd.commit();
        }
        catch (SQLException erro)
        {
@@ -96,7 +96,7 @@ public class Cursos
 	public void excluir (int codCurso) throws Exception
 	{
        if (codCurso<=0)
-           throw new Exception ("Código do Curso nao fornecido");
+           throw new Exception ("CÃ³digo do Curso nao fornecido");
 
        if (!cadastrado (codCurso))
            throw new Exception ("Nao cadastrado");

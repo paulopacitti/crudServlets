@@ -72,8 +72,6 @@ public class InclusaoCurso extends HttpServlet
 				} 
 				catch (Exception e1) 
 				{
-					e1.getMessage();
-					e1.printStackTrace();
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
 					response.getWriter().println("<body>SQLException</body>");
