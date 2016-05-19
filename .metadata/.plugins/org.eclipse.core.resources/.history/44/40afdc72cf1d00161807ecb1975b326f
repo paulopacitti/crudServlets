@@ -39,6 +39,7 @@ public class Alteracao extends HttpServlet
 		
 		try
 		{
+			response.getWriter().append("Served at: ").append(request.getContextPath());
 			String ra = request.getParameter("ra");
 			String endereco = request.getParameter("endereco");
 			String cidade = request.getParameter("cidade");
@@ -49,7 +50,7 @@ public class Alteracao extends HttpServlet
 			{
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Algum campo est· vazio. Tente novamente.</body>");
+					response.getWriter().println("<body>Algum campo est√° vazio. Tente novamente.</body>");
 					response.getWriter().println("</html>");
 					return;
 			}

@@ -38,7 +38,6 @@ public class Exclusao extends HttpServlet
 		
 		try
 		{
-			response.getWriter().append("Served at: ").append(request.getContextPath());
 			String ra = request.getParameter("ra");
 
 			if(ra == "")

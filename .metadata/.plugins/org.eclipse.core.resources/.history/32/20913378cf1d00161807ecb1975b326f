@@ -39,6 +39,7 @@ public class Alteracao extends HttpServlet
 		
 		try
 		{
+			response.getWriter().append("Served at: ").append(request.getContextPath());
 			String ra = request.getParameter("ra");
 			String endereco = request.getParameter("endereco");
 			String cidade = request.getParameter("cidade");
