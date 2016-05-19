@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+G:\COTUCA\5o Semestre\Desenvolvimento para Internet\Softwares\ProjetoServlets\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+494880311.index
+487588923.index
+2509917681.index
+3834131374.index
+3615579717.index
+2548993929.index
+637378401.index
