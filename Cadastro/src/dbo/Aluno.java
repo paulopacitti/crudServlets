@@ -12,7 +12,7 @@ public class Aluno
 	private String UF;
 	private int idCurso;
 
-	public Aluno(String novoRA, String novoNome, String novaDataNascimento, String novoRG, String novoCPF, String novoEndereco, String novaCidade, String novaUF, String novoIdCurso)
+	public Aluno(String novoRA, String novoNome, String novaDataNascimento, String novoRG, String novoCPF, String novoEndereco, String novaCidade, String novaUF, int novoIdCurso)
 	{
 		this.RA = novoRA;
 		this.nome = novoNome;
@@ -22,7 +22,7 @@ public class Aluno
 		this.endereco = novoEndereco;
 		this.cidade = novaCidade;
 		this.UF = novaUF;
-		this.idCurso = Integer.parseInt(novoIdCurso);
+		this.idCurso = novoIdCurso;
 	}
 	
 	public String getRA() 

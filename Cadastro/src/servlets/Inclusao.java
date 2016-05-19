@@ -39,7 +39,6 @@ public class Inclusao extends HttpServlet
 
 		try
 		{
-			response.getWriter().append("Served at: /n ").append(request.getContextPath());
 			
 			
 			String RA = request.getParameter("ra");
@@ -57,7 +56,7 @@ public class Inclusao extends HttpServlet
 			{
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head><meta charset=" + "UTF-8" + "></head>");
-					response.getWriter().println("<body>Algum campo est√° vazio. Tente novamente.</body>");
+					response.getWriter().println("<body>Algum campo est· vazio. Tente novamente.</body>");
 					response.getWriter().println("</html>");
 					return;
 			}
@@ -70,12 +69,11 @@ public class Inclusao extends HttpServlet
 			            "BDu14191", "cotuca");
 				request.getSession().setAttribute("conexao", comando);
 
-				Aluno aluno = new Aluno(RA, nome, dataNascimento, RG, CPF, endereco, cidade, UF, curso);
+				Aluno aluno = new Aluno(RA, nome, dataNascimento, RG, CPF, endereco, cidade, UF, Integer.parseInt(curso));
 				try
 				{
 					Alunos alunos = new Alunos(comando);
-					response.getWriter().println("arroz");
-					alunos.incluir(aluno);
+					alunos.incluir(aluno);				
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
 					response.getWriter().println("<body>Inclusao realizada com sucesso</body>");
@@ -85,7 +83,9 @@ public class Inclusao extends HttpServlet
 				{
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException bla</body>");
+					response.getWriter().println("<body>SQLException</body>");
+					e1.printStackTrace();
+					e1.getMessage();
 					response.getWriter().println("</html>");
 
 				}

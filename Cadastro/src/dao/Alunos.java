@@ -26,7 +26,7 @@ public class Alunos
 	        {
 	            String sql;
 
-	            sql = "SELECT COUNT(*) AS QUANTOS FROM BDu14191.Aluno WHERE BDu14191.Aluno.nome = ?";
+	            sql = "SELECT COUNT(*) AS QUANTOS FROM BDu14191.Aluno WHERE BDu14191.Aluno.RA = ?";
 	            
 	            
 	            bd.prepareStatement (sql);
@@ -62,7 +62,7 @@ public class Alunos
 	        if (aluno==null)
 	            throw new Exception ("Aluno nao fornecido");
 	        if (cadastrado (aluno.getRA()))
-	            throw new Exception ("Aluno já existe na base de dados");
+	            throw new Exception ("Aluno jï¿½ existe na base de dados");
 
 	        try
 	        {
@@ -70,7 +70,7 @@ public class Alunos
 
 	            sql = "INSERT INTO BDu14191.Aluno VALUES (?,?,?,?,?,?,?,?,?)";
 
-	            bd.prepareStatement (sql);
+	            bd.prepareStatement(sql);
 
 	            bd.setString (1, aluno.getRA());
 	            bd.setString (2, aluno.getNome());	            
@@ -82,12 +82,15 @@ public class Alunos
 	            bd.setString (8, aluno.getUF());
 	            bd.setInt (9, aluno.getIdCurso());
 
-	            bd.executeUpdate ();
+	            bd.executeUpdate();
 	            bd.commit();
 	        }
 	        catch (SQLException erro)
 	        {
-	            throw new Exception ("Erro ao inserir aluno");
+	            
+	           // erro.printStackTrace();
+	        	throw new Exception (erro.getMessage());
+
 	        }
 	    }
 	  
@@ -106,7 +109,7 @@ public class Alunos
 	            sql = "DELETE FROM BDu14191.Aluno WHERE RA=?";
 	            bd.prepareStatement (sql);
 	            bd.setString (1, ra);
-	            bd.executeUpdate ();
+	            bd.executeUpdate();
 	        }
 	        catch (SQLException erro)
 	        {
@@ -138,6 +141,7 @@ public class Alunos
 	            bd.setString (5, ra);
 
 	            bd.executeUpdate ();
+	            bd.commit();
 	        }
 	        catch (SQLException erro)
 	        {
@@ -169,7 +173,7 @@ public class Alunos
 
 	           aluno = new Aluno (resultado.getString("RA"), resultado.getString("nome"), resultado.getString("dataNascimento"), 
 	                               resultado.getString("RG"), resultado.getString("CPF"),
-	                               resultado.getString("endereco"), resultado.getString("cidade"), resultado.getString("UF"), resultado.getInt("codCurso") + "");
+	                               resultado.getString("endereco"), resultado.getString("cidade"), resultado.getString("UF"), resultado.getInt("codCurso"));
 	           
 	        }
 	        catch (SQLException erro)
