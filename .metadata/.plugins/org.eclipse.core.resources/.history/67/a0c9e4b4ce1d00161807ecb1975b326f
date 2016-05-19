@@ -137,7 +137,7 @@ public class Alunos
 	            bd.setString (1, endereco);
 	            bd.setString (2, cidade);
 	            bd.setString (3, uf);
-	            bd.setInt (4, curso);
+	            bd.setString (4, curso);
 	            bd.setString (5, ra);
 
 	            bd.executeUpdate ();

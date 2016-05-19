@@ -44,7 +44,7 @@ public class Alteracao extends HttpServlet
 			String endereco = request.getParameter("endereco");
 			String cidade = request.getParameter("cidade");
 			String UF = request.getParameter("UF");
-			String curso = request.getParameter("curso");
+			String curso = request.getParameter("codCurso");
 
 			if(ra == "" || endereco == "" || cidade =="" || UF == "" || curso =="")
 			{

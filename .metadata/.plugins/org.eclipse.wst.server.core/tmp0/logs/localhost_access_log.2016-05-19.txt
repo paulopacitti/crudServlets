@@ -23,3 +23,12 @@
 0:0:0:0:0:0:0:1 - - [19/May/2016:11:28:26 -0300] "GET /favicon.ico HTTP/1.1" 404 1016
 0:0:0:0:0:0:0:1 - - [19/May/2016:11:28:28 -0300] "GET /Cadastro/Alteracao.html HTTP/1.1" 200 1353
 0:0:0:0:0:0:0:1 - - [19/May/2016:11:28:43 -0300] "GET /Cadastro/Alteracao?ra=14191&endereco=Rua+Albano+de+Almeida+Lima&cidade=Campinas&botao=Alterar HTTP/1.1" 200 79
+127.0.0.1 - - [19/May/2016:11:34:04 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [19/May/2016:11:34:05 -0300] "GET /Cadastro/Inclusao.html HTTP/1.1" 200 1709
+0:0:0:0:0:0:0:1 - - [19/May/2016:11:34:59 -0300] "GET /Cadastro/Inclusao.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [19/May/2016:11:35:22 -0300] "GET /Cadastro/Alteracao?ra=14191&endereco=Albano+de+Almeida+Lima%2C+586&cidade=Campinas&botao=Alterar HTTP/1.1" 200 79
+127.0.0.1 - - [19/May/2016:11:37:36 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [19/May/2016:11:37:37 -0300] "GET /Cadastro/Alteracao HTTP/1.1" 200 79
+127.0.0.1 - - [19/May/2016:11:37:51 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [19/May/2016:11:37:52 -0300] "GET /Cadastro/Alteracao.html HTTP/1.1" 200 1363
+0:0:0:0:0:0:0:1 - - [19/May/2016:11:38:06 -0300] "GET /Cadastro/Alteracao?ra=14191&endereco=Albano+de+Almeida&cidade=Campinas&UF=SP&curso=1&botao=Alterar HTTP/1.1" 200 98

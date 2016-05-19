@@ -18,7 +18,7 @@
 	<form action="Alteracao">
 	RA: <input type="text" maxlength=5 name="ra" onkeypress='return isNumberKey(event)'> <br><br> 
 	Endereço: <input type="text" name="endereco"> &nbsp Cidade: <input type="text" maxlength=30 name="cidade"> &nbsp 
-	UF: <select name="UF">
+	UF: <select>
   			<option value="SP">SP</option>
   			<option value="MG">MG</option>
   			<option value="RJ">RJ</option>
@@ -27,7 +27,7 @@
 
 	<h2>Curso</h2>
 	<hr>
-	Selecionar curso: <select name="curso">
+	Selecionar curso: <select name:"curso">
   			<option value="1">PD</option>
   			<option value="2">MEC</option>
   			<option value="3">ELD</option>

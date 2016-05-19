@@ -27,7 +27,7 @@
 
 	<h2>Curso</h2>
 	<hr>
-	Selecionar curso: <select name="curso">
+	Selecionar curso: <select name=s"curso">
   			<option value="1">PD</option>
   			<option value="2">MEC</option>
   			<option value="3">ELD</option>
