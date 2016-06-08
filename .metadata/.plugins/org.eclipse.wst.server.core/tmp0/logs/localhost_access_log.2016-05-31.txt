@@ -1,0 +1,4 @@
+127.0.0.1 - - [31/May/2016:07:41:56 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [31/May/2016:07:41:59 -0300] "GET /Cadastro/inclusaoCurso.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [31/May/2016:07:42:00 -0300] "GET /Cadastro/funcoes.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [31/May/2016:07:43:07 -0300] "GET /Cadastro/InclusaoCurso?codCurso=6&nome=MeioAmbiente&botao=Incluir HTTP/1.1" 200 114

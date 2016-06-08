@@ -22,8 +22,11 @@ public class Cursos
 	{
        boolean retorno = false;
 
-       if (codCurso==0)
+       if (codCurso<=0)
+       {
+    	   
            throw new Exception ("Código do Curso não fornecido");
+       }
 
        try
        {
@@ -70,7 +73,9 @@ public class Cursos
    {
        if (curso==null)
            throw new Exception ("Curso nao fornecido");
-       if (cadastrado (curso.getCodCurso()))
+       System.out.println("=========33333333================" + curso.getCodCurso());
+       System.out.println("=========33333333================" + curso.getNome());
+       if (cadastrado(curso.getCodCurso()))
               throw new Exception ("Curso já existe na base de dados");
 
        try
@@ -89,6 +94,7 @@ public class Cursos
        }
        catch (SQLException erro)
        {
+    	  
            throw new Exception ("Erro ao inserir curso");
        }
    	}
@@ -111,10 +117,13 @@ public class Cursos
 
            bd.setInt (1, codCurso);
 
-           bd.executeUpdate ();
+           bd.executeUpdate();
+           bd.commit();
        }
        catch (SQLException erro)
        {
+    	   erro.printStackTrace();
+    	   erro.getMessage();
            throw new Exception ("Erro ao excluir curso");
        }
 	}

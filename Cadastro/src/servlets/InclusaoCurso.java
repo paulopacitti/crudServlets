@@ -76,7 +76,7 @@ public class InclusaoCurso extends HttpServlet
 					e1.printStackTrace();
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException</body>");
+					response.getWriter().println("<body>SQLException: "+e1.getMessage()+"   ]"+codCurso+"[</body>");
 					response.getWriter().println("</html>");				
 				}
 				

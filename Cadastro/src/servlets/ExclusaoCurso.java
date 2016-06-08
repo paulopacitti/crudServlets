@@ -58,12 +58,12 @@ public class ExclusaoCurso extends HttpServlet
 			            "jdbc:sqlserver://regulus:1433;databasename=BDu14191",
 			            "BDu14191", "cotuca");
 				request.getSession().setAttribute("conexao", comando);
-
 				try
 				{
 					Cursos cursos = new Cursos(comando);
+					System.out.println("11111111111111111111");
 					cursos.excluir(Integer.parseInt(codCurso));
-
+					
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
 					response.getWriter().println("<body>Exclusao realizada com sucesso</body>");
@@ -71,13 +71,14 @@ public class ExclusaoCurso extends HttpServlet
 				}
 				catch (Exception e1)
 				{
+					e1.printStackTrace();
+					e1.getMessage();
+					System.out.println("22222222222222222222");
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException</body>");
+					response.getWriter().println("<body>SQLException" + e1.getMessage() + "</body>");
 					response.getWriter().println("</html>");
-
 				}
-
 			}
 		}
 		catch(IOException e)
@@ -97,11 +98,12 @@ public class ExclusaoCurso extends HttpServlet
 		}
 		catch (SQLException e1)
 		{
+			e1.printStackTrace();
+			e1.getMessage();
 			response.getWriter().println("<html>");
 			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>SQLException</body>");
+			response.getWriter().println("<body>SQLException" + e1.getMessage() + "</body>");
 			response.getWriter().println("</html>");
-			e1.printStackTrace();
 		}
 
 		//float var = Float.parseFloat(request.getParameter("money");

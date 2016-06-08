@@ -12,6 +12,7 @@ public class Curso
 		{
 			this.setCodCurso(codCurso);
 			this.setNome(nome);
+			System.out.println("=============222222============" + codCurso);
 		} 
 		catch (Exception e)
 		{
@@ -27,10 +28,12 @@ public class Curso
 	
 	public void setCodCurso(int novoCodCurso) throws Exception
 	{
+		System.out.println("=========4444444================" + novoCodCurso);
 		if(novoCodCurso < 0)
 			throw new Exception("Ã�ndice negativo nÃ£o pode ser inserido");
 		else
-			this.codCurso = codCurso;
+			this.codCurso = novoCodCurso;
+			System.out.println("=========l1111================" + novoCodCurso);
 	}
 	
 	public String getNome() 
@@ -43,7 +46,7 @@ public class Curso
 		if(novoNome.trim() == "")
 			throw new Exception("Nome nÃ£o pode ser nulo");
 		else
-			this.nome = nome;
+			this.nome = novoNome;
 	}
 	
 }
