@@ -14,7 +14,7 @@ import dao.*;
 /**
  * Servlet implementation class ExclusaoCurso
  */
-@WebServlet("/ExclusaoCurso")
+@WebServlet("/ExlusaoCurso")
 public class ExclusaoCurso extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -55,8 +55,8 @@ public class ExclusaoCurso extends HttpServlet
 			if(comando == null)
 			{
 				comando = new MeuPreparedStatement("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-			            "jdbc:sqlserver://regulus:1433;databasename=BDu14191",
-			            "BDu14191", "cotuca");
+			            "jdbc:sqlserver://regulus:1433;databasename=BDu14160",
+			            "BDu14160", "xixicoco1313");
 				request.getSession().setAttribute("conexao", comando);
 			}
 				try
@@ -79,6 +79,7 @@ public class ExclusaoCurso extends HttpServlet
 					response.getWriter().println("<body>SQLException arroz</body>");
 					response.getWriter().println("</html>");
 				}
+			}
 		}
 		catch(IOException e)
 		{

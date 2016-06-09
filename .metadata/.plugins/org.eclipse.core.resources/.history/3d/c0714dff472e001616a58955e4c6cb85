@@ -15,7 +15,7 @@
 	<br>
 	<br>
 
-
+	<form action="ExclusaoCurso" method="post">
 	Código do Curso: <input type="text" name="codCurso" onkeypress='return isNumberKey(event)'>
   			
 	<center>
