@@ -16,14 +16,14 @@ import dao.*;
  * Servlet implementation class Inclusao
  */
 @WebServlet("/InclusaoCurso")
-public class InclusaoCurso extends HttpServlet 
+public class InclusaoCurso extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InclusaoCurso() 
+    public InclusaoCurso()
     {
         super();
         // TODO Auto-generated constructor stub
@@ -32,11 +32,11 @@ public class InclusaoCurso extends HttpServlet
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
-		
-		
+
+
 		try
 		{
 			response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -47,11 +47,11 @@ public class InclusaoCurso extends HttpServlet
 			{
 				response.getWriter().println("<html>");
 				response.getWriter().println("<head></head>");
-				response.getWriter().println("<body>Algum campo está vazio. Tente novamente.</body>");
+				response.getWriter().println("<body>Algum campo estï¿½ vazio. Tente novamente.</body>");
 				response.getWriter().println("</html>");
 				return;
 			}
-			
+
 			MeuPreparedStatement comando = (MeuPreparedStatement) request.getSession().getAttribute("conexao");
 			if(comando == null)
 			{
@@ -59,61 +59,42 @@ public class InclusaoCurso extends HttpServlet
 			            "jdbc:sqlserver://regulus:1433;databasename=BDu14191",
 			            "BDu14191", "cotuca");
 				request.getSession().setAttribute("conexao", comando);
-				
-				Curso curso = new Curso(Integer.parseInt(codCurso), nome); 
-				try 
+
+				Curso curso = new Curso(Integer.parseInt(codCurso), nome);
+				try
 				{
 					Cursos cursos = new Cursos(comando);
 					cursos.incluir(curso);
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Inclusao realizada com sucesso</body>");
-					response.getWriter().println("</html>");
-				} 
-				catch (Exception e1) 
-				{
-					e1.getMessage();
-					e1.printStackTrace();
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException: "+e1.getMessage()+"   ]"+codCurso+"[</body>");
-					response.getWriter().println("</html>");				
+					response.sendRedirect("sucesso.html");
 				}
-				
+				catch (Exception e1)
+				{
+				response.sendRedirect("erro.html");
+				}
+
 			}
 		}
 		catch(IOException e)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>erro1</body>");
-			response.getWriter().println("</html>");
-		} 
-		catch (ClassNotFoundException e1) 
-		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>ClassNotFoundException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
-		} 
-		catch (SQLException e1) 
-		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>SQLException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
+			response.sendRedirect("erro.html");
 		}
-				
-		//float var = Float.parseFloat(request.getParameter("money");	
+		catch (ClassNotFoundException e1)
+		{
+			response.sendRedirect("erro.html");
+		}
+		catch (SQLException e1)
+		{
+			response.sendRedirect("erro.html");
+		}
+
+		//float var = Float.parseFloat(request.getParameter("money");
 
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
 		doGet(request, response);

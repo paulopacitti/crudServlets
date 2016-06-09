@@ -39,8 +39,8 @@ public class Inclusao extends HttpServlet
 
 		try
 		{
-			
-			
+
+
 			String RA = request.getParameter("ra");
 			String nome = request.getParameter("nome");
 			String dataNascimento = request.getParameter("dataNascimento");
@@ -56,7 +56,7 @@ public class Inclusao extends HttpServlet
 			{
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head><meta charset=" + "UTF-8" + "></head>");
-					response.getWriter().println("<body>Algum campo está vazio. Tente novamente.</body>");
+					response.getWriter().println("<body>Algum campo estï¿½ vazio. Tente novamente.</body>");
 					response.getWriter().println("</html>");
 					return;
 			}
@@ -73,46 +73,27 @@ public class Inclusao extends HttpServlet
 				try
 				{
 					Alunos alunos = new Alunos(comando);
-					alunos.incluir(aluno);				
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Inclusao realizada com sucesso</body>");
-					response.getWriter().println("</html>");
+					alunos.incluir(aluno);
+					response.sendRedirect("sucesso.html");
 				}
 				catch (Exception e1)
 				{
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException</body>");
-					e1.printStackTrace();
-					e1.getMessage();
-					response.getWriter().println("</html>");
+					response.sendRedirect("erro.html");
 
 				}
 			}
 		}
 		catch(IOException e)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>IO Exception</body>");
-			response.getWriter().println("</html>");
+			response.sendRedirect("erro.html");
 		}
 		catch (ClassNotFoundException e1)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>ClassNotFoundException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
+			response.sendRedirect("erro.html");
 		}
 		catch (SQLException e1)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>SQLException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
+			response.sendRedirect("erro.html");;
 		}
 
 		//float var = Float.parseFloat(request.getParameter("money");

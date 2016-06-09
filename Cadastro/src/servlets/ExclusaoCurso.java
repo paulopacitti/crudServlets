@@ -63,46 +63,25 @@ public class ExclusaoCurso extends HttpServlet
 				{
 					Cursos cursos = new Cursos(comando);
 					cursos.excluir(Integer.parseInt(codCurso));
-					
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Exclusao realizada com sucesso</body>");
-					response.getWriter().println("</html>");
+
+					response.sendRedirect("sucesso.html");
 				}
 				catch (Exception e1)
 				{
-					e1.printStackTrace();
-					e1.getMessage();
-					System.out.println("22222222222222222222");
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException arroz</body>");
-					response.getWriter().println("</html>");
+					response.sendRedirect("erro.html");
 				}
 		}
 		catch(IOException e)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>IOException</body>");
-			response.getWriter().println("</html>");
+			response.sendRedirect("erro.html");
 		}
 		catch (ClassNotFoundException e1)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>ClassNotFoundException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
+			response.sendRedirect("erro.html");
 		}
 		catch (SQLException e1)
 		{
-			e1.printStackTrace();
-			e1.getMessage();
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>SQLException feijaum</body>");
-			response.getWriter().println("</html>");
+			response.sendRedirect("erro.html");
 		}
 
 		//float var = Float.parseFloat(request.getParameter("money");

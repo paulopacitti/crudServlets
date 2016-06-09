@@ -16,14 +16,14 @@ import dao.*;
  * Servlet implementation class Alteracao
  */
 @WebServlet("/Alteracao")
-public class Alteracao extends HttpServlet 
+public class Alteracao extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Alteracao() 
+    public Alteracao()
     {
         super();
         // TODO Auto-generated constructor stub
@@ -32,11 +32,11 @@ public class Alteracao extends HttpServlet
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
-		
-		
+
+
 		try
 		{
 			String ra = request.getParameter("ra");
@@ -49,11 +49,11 @@ public class Alteracao extends HttpServlet
 			{
 					response.getWriter().println("<html>");
 					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Algum campo est· vazio. Tente novamente.</body>");
+					response.getWriter().println("<body>Algum campo est√° vazio. Tente novamente.</body>");
 					response.getWriter().println("</html>");
 					return;
 			}
-			
+
 			MeuPreparedStatement comando = (MeuPreparedStatement) request.getSession().getAttribute("conexao");
 			if(comando == null)
 			{
@@ -61,63 +61,42 @@ public class Alteracao extends HttpServlet
 			            "jdbc:sqlserver://regulus:1433;databasename=BDu14191",
 			            "BDu14191", "cotuca");
 				request.getSession().setAttribute("conexao", comando);
-				
-				try 
+
+				try
 				{
 					Alunos alunos = new Alunos(comando);
 					alunos.alterar(ra, endereco, cidade, UF, Integer.parseInt(curso));
-
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Alteracao realizada com sucesso</body>");
-					response.getWriter().println("</html>");
-				} 
-				catch (Exception e1) 
-				{
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException</body>");
-					response.getWriter().println("</html>");
-					
+					response.sendRedirect("sucesso.html");
 				}
-				
+				catch (Exception e1)
+				{
+					response.sendRedirect("erro.html");
+				}
 			}
 		}
 		catch(IOException e)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>IOException</body>");
-			response.getWriter().println("</html>");
-		} 
-		catch (ClassNotFoundException e1) 
-		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>ClassNotFoundException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
-		} 
-		catch (SQLException e1) 
-		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>SQLException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
+			response.sendRedirect("erro.html");
 		}
-		
+		catch (ClassNotFoundException e1)
+		{
+			response.sendRedirect("erro.html");
+		}
+		catch (SQLException e1)
+		{
+			response.sendRedirect("erro.html");
+		}
+
 
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
 }
-

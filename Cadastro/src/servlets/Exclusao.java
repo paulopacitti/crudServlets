@@ -15,14 +15,14 @@ import dao.*;
  * Servlet implementation class Exclusao
  */
 @WebServlet("/Exclusao")
-public class Exclusao extends HttpServlet 
+public class Exclusao extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Exclusao() 
+    public Exclusao()
     {
         super();
         // TODO Auto-generated constructor stub
@@ -31,11 +31,11 @@ public class Exclusao extends HttpServlet
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
-		
-		
+
+
 		try
 		{
 			String ra = request.getParameter("ra");
@@ -49,7 +49,7 @@ public class Exclusao extends HttpServlet
 					return;
 			}
 
-			
+
 			MeuPreparedStatement comando = (MeuPreparedStatement) request.getSession().getAttribute("conexao");
 			if(comando == null)
 			{
@@ -57,59 +57,38 @@ public class Exclusao extends HttpServlet
 			            "jdbc:sqlserver://regulus:1433;databasename=BDu14191",
 			            "BDu14191", "cotuca");
 				request.getSession().setAttribute("conexao", comando);
-				
-				try 
+
+				try
 				{
 					Alunos alunos = new Alunos(comando);
 					alunos.excluir(ra);
-
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Exclusao realizada com sucesso</body>");
-					response.getWriter().println("</html>");
-				} 
-				catch (Exception e1) 
-				{
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>SQLException</body>");
-					response.getWriter().println("</html>");
-					
+					response.sendRedirect("sucesso.html");
 				}
-				
+				catch (Exception e1)
+				{
+					response.sendRedirect("erro.html");
+				}
 			}
 		}
 		catch(IOException e)
 		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>erro2</body>");
-			response.getWriter().println("</html>");
-		} 
-		catch (ClassNotFoundException e1) 
-		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>ClassNotFoundException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
-		} 
-		catch (SQLException e1) 
-		{
-			response.getWriter().println("<html>");
-			response.getWriter().println("<head></head>");
-			response.getWriter().println("<body>SQLException</body>");
-			response.getWriter().println("</html>");
-			e1.printStackTrace();
+			response.sendRedirect("erro.html");
 		}
-			
+		catch (ClassNotFoundException e1)
+		{
+			response.sendRedirect("erro.html");
+		}
+		catch (SQLException e1)
+		{
+			response.sendRedirect("erro.html");
+		}
 
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
