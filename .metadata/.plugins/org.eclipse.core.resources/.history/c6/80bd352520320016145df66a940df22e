@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dbo.*;
 import classes_bd.*;
 import dao.*;
 
 /**
- * Servlet implementation class Inclusao
+ * Servlet implementation class Exclusao
  */
-@WebServlet("/InclusaoCurso")
-public class InclusaoCurso extends HttpServlet
+@WebServlet("/Exclusao")
+public class Exclusao extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InclusaoCurso()
+    public Exclusao()
     {
         super();
         // TODO Auto-generated constructor stub
@@ -39,15 +38,17 @@ public class InclusaoCurso extends HttpServlet
 
 		try
 		{
-			response.getWriter().append("Served at: ").append(request.getContextPath());
-			String codCurso = request.getParameter("codCurso");
-			String nome = request.getParameter("nome");
+			String ra = request.getParameter("ra");
 
-			if(codCurso == "" || nome == "")
+			if(ra == "")
 			{
-				response.sendRedirect("erro.html");
-				return;
+					response.getWriter().println("<html>");
+					response.getWriter().println("<head></head>");
+					response.getWriter().println("<body>Algum campo está vazio. Tente novamente.</body>");
+					response.getWriter().println("</html>");
+					return;
 			}
+
 
 			MeuPreparedStatement comando = (MeuPreparedStatement) request.getSession().getAttribute("conexao");
 			if(comando == null)
@@ -57,18 +58,16 @@ public class InclusaoCurso extends HttpServlet
 			            "BDu14191", "cotuca");
 				request.getSession().setAttribute("conexao", comando);
 
-				Curso curso = new Curso(Integer.parseInt(codCurso), nome);
 				try
 				{
-					Cursos cursos = new Cursos(comando);
-					cursos.incluir(curso);
+					Alunos alunos = new Alunos(comando);
+					alunos.excluir(ra);
 					response.sendRedirect("sucesso.html");
 				}
 				catch (Exception e1)
 				{
 					response.sendRedirect("erro.html");
 				}
-
 			}
 		}
 		catch(IOException e)
@@ -83,8 +82,6 @@ public class InclusaoCurso extends HttpServlet
 		{
 			response.sendRedirect("erro.html");
 		}
-
-		//float var = Float.parseFloat(request.getParameter("money");
 
 	}
 

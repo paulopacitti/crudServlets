@@ -45,7 +45,10 @@ public class InclusaoCurso extends HttpServlet
 
 			if(codCurso == "" || nome == "")
 			{
-				response.sendRedirect("erro.html");
+				response.getWriter().println("<html>");
+				response.getWriter().println("<head></head>");
+				response.getWriter().println("<body>Algum campo est� vazio. Tente novamente.</body>");
+				response.getWriter().println("</html>");
 				return;
 			}
 
@@ -66,7 +69,7 @@ public class InclusaoCurso extends HttpServlet
 				}
 				catch (Exception e1)
 				{
-					response.sendRedirect("erro.html");
+				response.sendRedirect("erro.html");
 				}
 
 			}

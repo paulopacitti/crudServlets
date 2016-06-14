@@ -42,10 +42,7 @@ public class Exclusao extends HttpServlet
 
 			if(ra == "")
 			{
-					response.getWriter().println("<html>");
-					response.getWriter().println("<head></head>");
-					response.getWriter().println("<body>Algum campo está vazio. Tente novamente.</body>");
-					response.getWriter().println("</html>");
+					response.sendRedirect("erro.html");
 					return;
 			}
 
